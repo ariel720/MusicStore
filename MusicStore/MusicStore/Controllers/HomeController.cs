@@ -33,10 +33,19 @@ namespace MusicStore.Controllers
         {
             ViewData["Message"] = "Your projects";
 
-            return View();
+
+            ViewBag.Xyz = "string"; //losely typed data : didn't declare the data type.
+            ViewBag.Abc = 5.5; //losely typed data : didn't declare the data type.
+
+            return View("Advanced");
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Albums()
         {
             return View();
         }

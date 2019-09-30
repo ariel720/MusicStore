@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNetCore.Mvc;
+using MusicStore.Models;
 
 namespace MusicStore.Controllers
 {
@@ -12,24 +13,33 @@ namespace MusicStore.Controllers
         public IActionResult Index()
         {
             //return View();
-            return Ok("test");
+            return Ok("test from index");
         }
 
         // GET: /Store/Browse?genre=Disco
-        public string Browse(string genre)
+        public IActionResult Browse(string genre)
         {
-            string message = HttpUtility.HtmlEncode("Store.Browse, Genre = "
-        + genre);
-
-            return message;
+           
+            return View();
         }
 
         // GET: /Store/Details/5
-        public string Details(int id)
+        public IActionResult Details(int id)
         {
-            string message = "Store.Details, ID = " + id;
 
-            return message;
+
+            return View();
         }
+         public IActionResult Albums()
+        {
+            var albums = new List<Album>();
+            for(int i = 0; i<10; i++)
+            {
+                albums.Add(new Album { Name = "album_"+i.ToString(), Artist = "test"+i.ToString() });
+
+            }
+            return View(albums);
+        }
+
     }
 }
